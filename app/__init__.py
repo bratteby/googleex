@@ -17,22 +17,24 @@ import logging
 
 from flask import Flask
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+    @app.route('/')
+    def hello():
+        """Return a friendly HTTP greeting."""
+        return 'Hello World!'
 
 
-@app.errorhandler(500)
-def server_error(e):
-    logging.exception('An error occurred during a request.')
-    return """
-    An internal error occurred: <pre>{}</pre>
-    See logs for full stacktrace.
-    """.format(e), 500
+    @app.errorhandler(500)
+    def server_error(e):
+        logging.exception('An error occurred during a request.')
+        return """
+        An internal error occurred: <pre>{}</pre>
+        See logs for full stacktrace.
+        """.format(e), 500
 
+    return app
 
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
