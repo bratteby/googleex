@@ -22,7 +22,8 @@ from .recommendations import Recommender
 def create_app():
     app = Flask(__name__)
 
-    MODEL_PATH = os.path.join("testmodel.h5")
+    #MODEL_PATH = os.path.join(".","testmodel.h5")
+    MODEL_PATH="testmodel.h5"
     r = Recommender(MODEL_PATH)
 
     @app.route('/')
