@@ -14,10 +14,11 @@
 
 # [START gae_flex_quickstart]
 import logging
+import sys
 import os.path
 from flask import Flask, jsonify, request
 
-from .ExempelClass import ExempelClass
+from .recommendations import Recommender
 
 def create_app():
     app = Flask(__name__)
