@@ -17,30 +17,22 @@ import logging
 import os.path
 from flask import Flask, jsonify, request
 
-from .recommendations import Recommender
+from .ExempelClass import ExempelClass
 
 def create_app():
     app = Flask(__name__)
 
     #MODEL_PATH = os.path.join(".","testmodel.h5")
-    MODEL_PATH="testmodel.h5"
-    r = Recommender(MODEL_PATH)
+    #MODEL_PATH="testmodel.h5"
+    #r = Recommender(MODEL_PATH)
+    e = ExempelClass()
 
     @app.route('/')
     def hello():
 
         """Return a friendly HTTP greeting."""
-        return 'Hello World!'
-
-    @app.route('/recommendation/<sku>',methods=['POST'])
-    def post_recommendation(sku=None):
-        if request.method == 'POST':
-
-            sku = request.get_json().get("body").get("products")
-            response = {"recommendations":r.get_recommendations(sku)}
-
-            return(jsonify(response))
-
+        return e.printhi()
+        #return 'Hello World!'
 
     @app.errorhandler(500)
     def server_error(e):
