@@ -22,21 +22,18 @@ from .ExempelClass import ExempelClass
 def create_app():
     app = Flask(__name__)
 
-    #MODEL_PATH = os.path.join(".","testmodel.h5")
-    #MODEL_PATH="testmodel.h5"
-    #r = Recommender(MODEL_PATH)
-    e = ExempelClass()
+    MODEL_PATH = os.path.join(sys.path[0],"app","testmodel.h5")
+    r = Recommender(MODEL_PATH)
 
     @app.route('/')
     def hello():
-
         """Return a friendly HTTP greeting."""
-        return e.printhi()
-        #return 'Hello World!'
+        return 'Hello World!'
 
-    @app.route('/goodbye')
-    def goodbye():
-        return jsonify(e.printho())
+    @app.route('/postrec')
+    def postrec():
+        res = r.get_recommendations(["13591"])
+        return jsonify(res)
 
     @app.errorhandler(500)
     def server_error(e):

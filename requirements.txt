@@ -2,4 +2,4 @@ Flask==1.0.2
 gunicorn==19.9.0
 numpy==1.15.1
 pandas==0.23.4
-pytables==3.4.4
+tables==3.4.4
