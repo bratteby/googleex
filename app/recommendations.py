@@ -4,7 +4,7 @@ import os.path
 
 #LOOKUP_PATH = model_path = os.path.join("..","data","misc","lookup.h5")
 
-class Recommender(object):
+class Recommender():
 	"""Provide recommendations from a pre-trained apriori alogirthm model"""
 	def __init__(self,model_path):
 		self.rules = None
