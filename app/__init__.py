@@ -31,10 +31,15 @@ def create_app():
         """Return a friendly HTTP greeting."""
         return 'Hello World!'
 
-    @app.route('/postrec')
-    def postrec():
-        res = r.get_recommendations(["13591"])
-        return jsonify(res)
+    @app.route('/recommendation',methods=['POST'])
+    def post_recommendation():
+        if request.method == 'POST':
+            sku = request.get_json().get("body").get("products")
+            res = r.get_recommendations(sku)
+            return jsonify(res)
+
+        else:
+            return "This should be accessed with post"
 
     @app.errorhandler(500)
     def server_error(e):
