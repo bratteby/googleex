@@ -1,4 +1,6 @@
 from .recommendations import Recommender
+import os.path
+import sys
 
 class ExempelClass():
 	"""docstring for ClassName"""
@@ -9,7 +11,8 @@ class ExempelClass():
 		return "Hello this is Adrian's program"
 		
 	def printho(self):
-		self.r = Recommender("testmodel.h5")
-		self.r.load_model()
-		return r.get_recommendations("13591")
+		MODEL_PATH = os.path.join(sys.path[0],"app","testmodel.h5")
+
+		self.r = Recommender(MODEL_PATH)
+		return self.r.get_recommendations(["13591"])
 		

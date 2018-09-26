@@ -29,7 +29,7 @@ class Recommender():
 		#Could also return rules here if we don't want to encapsulate in a class
 
 	def get_recommendations(self, sku, n_recommendations=3):
-		'''Given a sku (product id) return list of n_recommendations items to recommend
+		'''Given a list of sku: (product id) return list of n_recommendations items to recommend
 
 		Args:
 			- sku: list of string SKUs to make a recommendation from 

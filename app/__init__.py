@@ -34,9 +34,9 @@ def create_app():
         return e.printhi()
         #return 'Hello World!'
 
-    @app.route('/goodbye'):
+    @app.route('/goodbye')
     def goodbye():
-        return e.printho()
+        return jsonify(e.printho())
 
     @app.errorhandler(500)
     def server_error(e):
